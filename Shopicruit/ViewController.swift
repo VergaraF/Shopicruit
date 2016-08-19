@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,14 +26,62 @@ class ViewController: UIViewController, UITableViewDelegate {
     func loadData(){
         var requestUrl = "http://shopicruit.myshopify.com/products.json?page="
         var counter = 1
-        let keepSwitchingPages = true
+        var keepSwitchingPages = true
+        print("loading data")
         while(keepSwitchingPages){
             requestUrl += String(counter)
             counter += 1
             let url = NSURL(string: requestUrl)
             
-            NSURLConnection.sendSynchronousRequest(url!, returningResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?>)
+            print("attempting first request")
+            
+            let data = NSData(contentsOfURL: url!)
+             //let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
+                print("making first request")
+                
+                if data != nil{
+                    
+                    print("receiving data from shopicruit endpoint")
+                    var jsonDataDictionary = NSDictionary()
+                    do{
+                        let jSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                        guard let jsonDataX = jSON as? NSDictionary else{
+                          print("not a dictionary")
+                          print("error retrieving json object")
+                          return
+                        }
+                        jsonDataDictionary = jsonDataX
+                        
+                    }catch let jsonError as NSError{
+                        print("\(jsonError)")
+                    }
+                    
+               
+                        
+                        var productsArray = jsonDataDictionary.objectForKey("products") as! NSArray
+                        
+                        print("making first request")
+
+                        for product in productsArray{
+                            print("----product printed----")
+                            print(product)
+                        }
+                        
+                        
+                        
+  
+                    
+
+                }else{
+                    
+                    //show error message
+                    print("error")
+                }
+            
+            keepSwitchingPages = false
+
         }
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -42,6 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 100
     }
+        
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: UITableViewCellStyle.Default,reuseIdentifier: "Cell")
         
