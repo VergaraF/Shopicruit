@@ -30,17 +30,15 @@ class ViewController: UIViewController, UITableViewDelegate {
         print("loading data")
         while(keepSwitchingPages){
             requestUrl += String(counter)
-            counter += 1
             let url = NSURL(string: requestUrl)
             
             print("attempting first request")
             
-            let data = NSData(contentsOfURL: url!)
+            var data = NSData(contentsOfURL: url!)
              //let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
-                print("making first request")
-                
+              print("making \(counter) request before data check")
+            
                 if data != nil{
-                    
                     print("receiving data from shopicruit endpoint")
                     var jsonDataDictionary = NSDictionary()
                     do{
@@ -56,20 +54,25 @@ class ViewController: UIViewController, UITableViewDelegate {
                         print("\(jsonError)")
                     }
                     
-               
+                    
+                    var productsArray = jsonDataDictionary.objectForKey("products") as! NSArray
                         
-                        var productsArray = jsonDataDictionary.objectForKey("products") as! NSArray
-                        
-                        print("making first request")
+                    print("making \(counter) request")
+                    
+                    if productsArray.count == 0{
+                        print(requestUrl)
+                        keepSwitchingPages = false
+                        counter = 0
+                        break
 
-                        for product in productsArray{
-                            print("----product printed----")
-                            print(product)
-                        }
-                        
-                        
-                        
-  
+                    }
+
+                    for product in productsArray{
+                        print("\nBeginning of product-----")
+                        print("Title : " + String(product["title"]))
+                        print("Type : " + String(product["product_type"]))
+                        print("----product printed----\n")
+                    }
                     
 
                 }else{
@@ -77,8 +80,9 @@ class ViewController: UIViewController, UITableViewDelegate {
                     //show error message
                     print("error")
                 }
-            
-            keepSwitchingPages = false
+            requestUrl = "http://shopicruit.myshopify.com/products.json?page="
+            counter += 1
+
 
         }
         
