@@ -133,9 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: UITableViewCellStyle.Default,reuseIdentifier: "Cell")
-        
-        //let timesTableValue = 10
-        
+
         cell.textLabel?.text = products[indexPath.row].productName
         
         return cell

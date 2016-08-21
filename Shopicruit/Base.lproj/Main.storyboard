@@ -40,12 +40,33 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" id="gIJ-6Z-CVE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" id="gIJ-6Z-CVE" customClass="ProductCell" customModule="Shopicruit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gIJ-6Z-CVE" id="5iu-DM-TVc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqC-Co-biv">
+                                                    <rect key="frame" x="8" y="14" width="494" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$99.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF8-jK-EaR">
+                                                    <rect key="frame" x="531" y="14" width="61" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oF8-jK-EaR" firstAttribute="trailing" secondItem="5iu-DM-TVc" secondAttribute="trailingMargin" id="Bxf-hp-wzg"/>
+                                                <constraint firstItem="HqC-Co-biv" firstAttribute="bottom" secondItem="5iu-DM-TVc" secondAttribute="bottomMargin" id="P1Q-9O-9H7"/>
+                                                <constraint firstItem="oF8-jK-EaR" firstAttribute="bottom" secondItem="5iu-DM-TVc" secondAttribute="bottomMargin" id="abg-hb-3Vd"/>
+                                                <constraint firstItem="HqC-Co-biv" firstAttribute="leading" secondItem="5iu-DM-TVc" secondAttribute="leadingMargin" id="fvi-A7-wqF"/>
+                                                <constraint firstItem="oF8-jK-EaR" firstAttribute="leading" secondItem="HqC-Co-biv" secondAttribute="trailing" constant="29" id="zOb-1I-aCg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>

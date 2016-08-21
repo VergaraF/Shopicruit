@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D84DE8B61D6A5D2A00191C1D /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DE8B51D6A5D2A00191C1D /* ProductCell.swift */; };
 		D89705C51D668EF30081A80C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89705C41D668EF30081A80C /* AppDelegate.swift */; };
 		D89705C71D668EF30081A80C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89705C61D668EF30081A80C /* ViewController.swift */; };
 		D89705CA1D668EF30081A80C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89705C81D668EF30081A80C /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D84DE8B51D6A5D2A00191C1D /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductCell.swift; path = ../ProductCell.swift; sourceTree = "<group>"; };
 		D89705C11D668EF30081A80C /* Shopicruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopicruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89705C41D668EF30081A80C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D89705C61D668EF30081A80C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		D89705C31D668EF30081A80C /* Shopicruit */ = {
 			isa = PBXGroup;
 			children = (
+				D84DE8B51D6A5D2A00191C1D /* ProductCell.swift */,
 				D89705C41D668EF30081A80C /* AppDelegate.swift */,
 				D89705C61D668EF30081A80C /* ViewController.swift */,
 				D89705D61D6748B30081A80C /* Product.swift */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D89705C71D668EF30081A80C /* ViewController.swift in Sources */,
+				D84DE8B61D6A5D2A00191C1D /* ProductCell.swift in Sources */,
 				D89705C51D668EF30081A80C /* AppDelegate.swift in Sources */,
 				D89705D71D6748B30081A80C /* Product.swift in Sources */,
 			);
@@ -293,6 +297,7 @@
 				D89705D51D668EF30081A80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
