@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate {
     
     var products = [Product]()
+    var desiredProductTypes = ["Clock", "Watch"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate {
                     print("making \(counter) request")
                     
                     if productsArray.count == 0{
+                        print("There are no more products on this page")
                         print(requestUrl)
                         keepSwitchingPages = false
                         counter = 0
@@ -72,9 +74,9 @@ class ViewController: UIViewController, UITableViewDelegate {
                       //  print("Title : " + String(product["title"]))
                       //  print("Type : " + String(product["product_type"]))
                         
-                        var item = Product(name: String(product["title"]!), price: 0.0, type: String(product["product_type"]!))
+                        var item = Product(name: String(product["title"]!!), price: 0.0, type: String(product["product_type"]!!))
                         
-                        var variantsDictionary = product["variants"] as! NSArray
+                        let variantsDictionary = product["variants"] as! NSArray
                         for variant in variantsDictionary{
                             if variant.count != 0{
                                // var price = (variant["price"]! as! NSString).doubleValue
@@ -84,21 +86,28 @@ class ViewController: UIViewController, UITableViewDelegate {
                                 
                                //item.setPrice(variant["price"])
                                 
-                                print("----product created and added----\n")
+                            
                                 break
                             }
                 
 
 
                         }
-                        self.products.append(item)
-                        print(self.products[counter-1].productName)
-                        print(self.products[counter-1].productType)
-                        print(String(self.products[counter-1].productPrice) + "\n")
+                        
+                        for type in desiredProductTypes{
+                            if type == item.productType{
+                                self.products.append(item)
+                                print(self.products[counter-1].productName)
+                                print(self.products[counter-1].productType)
+                                print(String(self.products[counter-1].productPrice) + "\n")
+                                break
 
+
+                            }
+                            print(item.productType + " is not a " + type + "\n")
+                        }
                     }
                     
-
                 }else{
                     
                     //show error message
@@ -106,7 +115,6 @@ class ViewController: UIViewController, UITableViewDelegate {
                 }
             requestUrl = "http://shopicruit.myshopify.com/products.json?page="
             counter += 1
-
 
         }
         
@@ -117,7 +125,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 100
+        return products.count
     }
         
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
