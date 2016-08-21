@@ -80,6 +80,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sxD-N0-SOf" secondAttribute="trailing" constant="-20" id="ghP-4R-Xcx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="totalCostLabel" destination="q5l-J9-HJL" id="QyT-5V-EWH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

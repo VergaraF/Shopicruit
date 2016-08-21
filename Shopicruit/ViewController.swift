@@ -13,9 +13,12 @@ class ViewController: UIViewController, UITableViewDelegate {
     var products = [Product]()
     var desiredProductTypes = ["Clock", "Watch"]
 
+    @IBOutlet var totalCostLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        calculateTotalCost()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -131,11 +134,20 @@ class ViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: UITableViewCellStyle.Default,reuseIdentifier: "Cell")
         
-        let timesTableValue = 10
+        //let timesTableValue = 10
         
-        cell.textLabel?.text = String(timesTableValue * indexPath.row)
+        cell.textLabel?.text = products[indexPath.row].productName
         
         return cell
+    }
+    
+    func calculateTotalCost(){
+        var total = 0.0
+        for i in 0..<products.count{
+            total += products[i].productPrice
+        }
+        
+        totalCostLabel.text = "Total cost: " + String(total) + "$"
     }
 
 
