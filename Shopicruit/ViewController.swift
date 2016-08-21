@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
     
-    let products = NSMutableArray()
+    var products = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,9 +69,33 @@ class ViewController: UIViewController, UITableViewDelegate {
 
                     for product in productsArray{
                         print("\nBeginning of product-----")
-                        print("Title : " + String(product["title"]))
-                        print("Type : " + String(product["product_type"]))
-                        print("----product printed----\n")
+                      //  print("Title : " + String(product["title"]))
+                      //  print("Type : " + String(product["product_type"]))
+                        
+                        var item = Product(name: String(product["title"]!), price: 0.0, type: String(product["product_type"]!))
+                        
+                        var variantsDictionary = product["variants"] as! NSArray
+                        for variant in variantsDictionary{
+                            if variant.count != 0{
+                               // var price = (variant["price"]! as! NSString).doubleValue
+                                item.setPrice((variant["price"]! as! NSString).doubleValue)
+                              //  item.setPrice = price as Double
+                               // item.setPrice(variant["price"]! as! String)
+                                
+                               //item.setPrice(variant["price"])
+                                
+                                print("----product created and added----\n")
+                                break
+                            }
+                
+
+
+                        }
+                        self.products.append(item)
+                        print(self.products[counter-1].productName)
+                        print(self.products[counter-1].productType)
+                        print(String(self.products[counter-1].productPrice) + "\n")
+
                     }
                     
 

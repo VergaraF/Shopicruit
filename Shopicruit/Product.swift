@@ -18,4 +18,8 @@ class Product{
         self.productPrice = price
         self.productType  = type
     }
+    
+    func setPrice(price: Double){
+        self.productPrice = price
+    }
 }
